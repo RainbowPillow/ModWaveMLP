@@ -17,6 +17,9 @@ Model           ->  model implementation
 ```bash
 pip install -r requirements.txt
 ```
+more details:
+cudnn==8.2.1, 
+cudatoolkit==11.3.1
 
 ## 3. Data Preparation
 

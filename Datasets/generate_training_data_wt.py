@@ -13,28 +13,17 @@ def data_to_wt(data, type, level):
     num_test = round(num_samples * 0.2)
     num_train = round(num_samples * 0.7)
     num_val = num_samples - num_test - num_train
-    # print(num_train)
-    # print(num_val)
-    # print(num_test)
     coeffs_train = pywt.wavedec(data[:num_train], type, level=level)
     coeffs_val = pywt.wavedec(data[num_train: num_train + num_val], type, level=level)
     coeffs_test = pywt.wavedec(data[-num_test:], type, level=level)
-    # print(len(coeffs_train[1]))
-    # print(len(coeffs_val))
-    # print(len(coeffs_test))
-    # 噪声方差估计：dealt=median(cA2)/0.6754
-    # dealt = np.median(np.abs(coeffs[-1]))  # 通过cD1计算dealt
     dealt = 1
-    # 阈值计算,这个是固定阈值计算方法
     threshold_train = dealt * np.sqrt(2 * np.log(len(data[:num_train])))
     threshold_val = dealt * np.sqrt(2 * np.log(len(data[num_train: num_train + num_val])))
     threshold_test = dealt * np.sqrt(2 * np.log(len(data[-num_test:])))
-    # 使用软或硬阈值处理小波系数
     for i in range(level):
         coeffs_train[-(i + 1)] = pywt.threshold(coeffs_train[-(i + 1)], value=threshold_train, mode="soft", substitute=0)
         coeffs_val[-(i + 1)] = pywt.threshold(coeffs_val[-(i + 1)], value=threshold_val, mode="soft", substitute=0)
         coeffs_test[-(i + 1)] = pywt.threshold(coeffs_test[-(i + 1)], value=threshold_test, mode="soft", substitute=0)
-        # 对硬阈值处理后的数据重构
     rec_train = list(pywt.waverec(coeffs=coeffs_train, wavelet=type))
     rec_val = list(pywt.waverec(coeffs=coeffs_val, wavelet=type))
     rec_test = list(pywt.waverec(coeffs=coeffs_test, wavelet=type))
@@ -164,7 +153,7 @@ def generate_train_val_test(args):
         _x, _y = locals()["x_" + cat], locals()["y_" + cat]
         print(cat, "x: ", _x.shape, "y:", _y.shape)     # dayinweek 20230416
         np.savez_compressed(
-            os.path.join(args.output_dir, "%s-history-%d-horizon-%d-day_in_week_wavelet_db_fam_level5_soft_trainvaltest.npz" % (cat, args.history_length, args.horizon)),
+            os.path.join(args.output_dir, "%s-history-%d-horizon-%d-day_in_week_wavelet_db_fam_level5_soft.npz" % (cat, args.history_length, args.horizon)),
             x=_x,
             y=_y,
             x_offsets=x_offsets.reshape(list(x_offsets.shape) + [1]),

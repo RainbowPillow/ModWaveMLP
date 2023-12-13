@@ -30,7 +30,7 @@ class Dataset(object):
 
         self.data = {}            
         for category in ['train', 'val', 'test']:
-            data_filename = os.path.join(dataset_parameters["output_dir"], category + f"-history-{self.history_length}-horizon-{self.horizon}-day_in_week_wavelet_db_fam_level5_soft_trainvaltest.npz")
+            data_filename = os.path.join(dataset_parameters["output_dir"], category + f"-history-{self.history_length}-horizon-{self.horizon}-day_in_week_wavelet_db_fam_level5_soft.npz")
             if not os.path.isfile(data_filename):
                 generate_train_val_test(DatasetParameters(**dataset_parameters))
             cat_data = np.load(data_filename)

@@ -35,3 +35,6 @@ The hyperparameters of ModWaveMLP can be changed in the Parameters.py
 ```bash
 python run_MoDWaveMLP.py --dataset metr-la --horizon 12 --history_length 12
 python run_MoDWaveMLP.py --dataset pems-bay --horizon 12 --history_length 12
+```
+
+## If you have any questions or suggestions, please feel free to contact us through this e-mail address(kenianqingzheng@qq.com), we sincerely look forward to communicating with you!

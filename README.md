@@ -2,8 +2,8 @@
 
 Code for our paper: "[ ModWaveMLP: MLP-Based Mode Decomposition and Wavelet Denoising Model to Defeat Complex Structures in Traffic Forecasting](https://github.com/Kqingzheng/ModWaveMLP/blob/master/ModWaveMLP.pdf)".
 
-
-
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/modwavemlp-mlp-based-mode-decomposition-and/traffic-prediction-on-metr-la)](https://paperswithcode.com/sota/traffic-prediction-on-metr-la?p=modwavemlp-mlp-based-mode-decomposition-and)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/modwavemlp-mlp-based-mode-decomposition-and/traffic-prediction-on-pems-bay)](https://paperswithcode.com/sota/traffic-prediction-on-pems-bay?p=modwavemlp-mlp-based-mode-decomposition-and)
 ## 1. Table of Contents
 
 ```text

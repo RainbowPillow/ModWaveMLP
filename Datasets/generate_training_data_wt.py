@@ -66,9 +66,6 @@ def generate_graph_seq2seq_io_data(
         time_in_day = np.tile(time_ind, [1, num_nodes, 1]).transpose((2, 1, 0))
         data_list.append(time_in_day)
     if add_day_in_week:
-        # day_in_week = np.zeros(shape=(num_samples, num_nodes, 7))  # 20230416
-        # day_in_week[np.arange(num_samples), :, df.index.dayofweek] = 1
-        # data_list.append(day_in_week)
         day_in_week = np.zeros(shape=(num_samples, num_nodes, 1))
         day_in_week[np.arange(num_samples), :, 0] = np.asarray(df.index.dayofweek/7).reshape(num_samples,1)
         data_list.append(day_in_week)
@@ -119,7 +116,7 @@ def generate_train_val_test(args):
         x_offsets=x_offsets,
         y_offsets=y_offsets,
         add_time_in_day=True,
-        add_day_in_week=True,   # False 20230416
+        add_day_in_week=True,   
     )
 
     x_mask, y_mask = generate_graph_seq2seq_io_data(
@@ -127,7 +124,7 @@ def generate_train_val_test(args):
         x_offsets=x_offsets,
         y_offsets=y_offsets,
         add_time_in_day=True,
-        add_day_in_week=True,   # False 20230416
+        add_day_in_week=True,  
     )
 
     print("x shape: ", x.shape, ", y shape: ", y.shape)
@@ -151,7 +148,7 @@ def generate_train_val_test(args):
 
     for cat in ["train", "val", "test"]:
         _x, _y = locals()["x_" + cat], locals()["y_" + cat]
-        print(cat, "x: ", _x.shape, "y:", _y.shape)     # dayinweek 20230416
+        print(cat, "x: ", _x.shape, "y:", _y.shape)     
         np.savez_compressed(
             os.path.join(args.output_dir, "%s-history-%d-horizon-%d-day_in_week_wavelet_db_fam_level5_soft.npz" % (cat, args.history_length, args.horizon)),
             x=_x,

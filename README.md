@@ -1,6 +1,6 @@
 # [AAAI 2024] ModWaveMLP: MLP-Based Mode Decomposition and Wavelet Denoising Model to Defeat Complex Structures in Traffic Forecasting
 
-Code for our paper: "[ ModWaveMLP: MLP-Based Mode Decomposition and Wavelet Denoising Model to Defeat Complex Structures in Traffic Forecasting](https://github.com/Kqingzheng/ModWaveMLP/blob/master/ModWaveMLP.pdf)".
+Code for our paper: "[ ModWaveMLP: MLP-Based Mode Decomposition and Wavelet Denoising Model to Defeat Complex Structures in Traffic Forecasting]".
 
 
 ## 1. Table of Contents
